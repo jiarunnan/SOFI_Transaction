@@ -35,7 +35,20 @@ Using a Interface for data-manager(can be memory, can be database)
 - So the TimeComplexity of  save step is O(lg(3)) -> O(1)
 - Time Complexity of getMostFrequentVisitedMerchat is O(3) -> O(1)
 
-- And if the transaction number is smaller than 5, it should 
+- And if the transaction number is smaller than 5, it should return InternalException with errorMsg:``The user only has 1 transactions``
+
+
+##Test
+
+I create 4 testcases which cover most of the situations
+```$xslt
+When_CallSaveTransactionFiveTimesWithSameInput_Then_CallGetMostVisited_Expected_ListWithOneElement
+When_CallSaveTransactionFourTimesWithSameInput_Then_CallGetMostVisited_Expected_InternalException
+When_CallSaveTransactionThreeTimesWithMerchantAOneTimeMerchantBOneTimeMerchantC_Then_CallGetMostVisited_Expected_ListOfMerchantABC
+When_CallSaveTransactionTwoTimesWithMerchantATwoTimeMerchantBTwoTimeMerchantCOneTimeMerchantD_Then_CallGetMostVisited_Expected_ListOfMerchantABC
+
+```
+##Sample Call
 - Here is the sample output of GET and POST request
                        
                        
@@ -104,12 +117,3 @@ Server: Jetty(9.0.4.v20130625)
 Response code: 500 (Server Error); Time: 17ms; Content length: 377 bytes
 ```
 
-##Test
-I create 4 testcases which cover most of the situations
-```$xslt
-When_CallSaveTransactionFiveTimesWithSameInput_Then_CallGetMostVisited_Expected_ListWithOneElement
-When_CallSaveTransactionFourTimesWithSameInput_Then_CallGetMostVisited_Expected_InternalException
-When_CallSaveTransactionThreeTimesWithMerchantAOneTimeMerchantBOneTimeMerchantC_Then_CallGetMostVisited_Expected_ListOfMerchantABC
-When_CallSaveTransactionTwoTimesWithMerchantATwoTimeMerchantBTwoTimeMerchantCOneTimeMerchantD_Then_CallGetMostVisited_Expected_ListOfMerchantABC
-
-```
