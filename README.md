@@ -5,8 +5,8 @@ Using following dependecy to build a simple rest api run logic
 - Jetty embedded 9.x
 - Jersey 1.x
 - Guice 3.0
+- JUnit
 
-In addition it uses simple filter, custom provider .
 
 ## Usage
 
@@ -102,4 +102,14 @@ Server: Jetty(9.0.4.v20130625)
 
 
 Response code: 500 (Server Error); Time: 17ms; Content length: 377 bytes
+```
+
+##Test
+I create 4 testcases which cover most of the situations
+```$xslt
+When_CallSaveTransactionFiveTimesWithSameInput_Then_CallGetMostVisited_Expected_ListWithOneElement
+When_CallSaveTransactionFourTimesWithSameInput_Then_CallGetMostVisited_Expected_InternalException
+When_CallSaveTransactionThreeTimesWithMerchantAOneTimeMerchantBOneTimeMerchantC_Then_CallGetMostVisited_Expected_ListOfMerchantABC
+When_CallSaveTransactionTwoTimesWithMerchantATwoTimeMerchantBTwoTimeMerchantCOneTimeMerchantD_Then_CallGetMostVisited_Expected_ListOfMerchantABC
+
 ```

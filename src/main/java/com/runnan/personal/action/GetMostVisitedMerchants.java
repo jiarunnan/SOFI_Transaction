@@ -24,12 +24,16 @@ public class GetMostVisitedMerchants {
   }
 
   @Path("/user/{user-id}")
-  @GET // 声明这个接口必须GET访问
-  @Produces(MediaType.APPLICATION_JSON) // 声明这个接口将以json格式返回
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
   public UserMerchants getUserMostVisitedMerchant(@PathParam("user-id") String userId) {
     System.out.println(dataManager == null);
     List<String> merchants = dataManager.getMostFrequentMerchant(userId);
-    return UserMerchants.builder().withMostFrequentlyMerchant(merchants).withUserId(userId).build();
+    return UserMerchants
+        .builder()
+        .withMostFrequentlyMerchant(merchants)
+        .withUserId(userId)
+        .build();
   }
 
 }

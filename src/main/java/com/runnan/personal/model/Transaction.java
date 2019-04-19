@@ -19,6 +19,19 @@ public class Transaction {
   @SerializedName("tx-id")
   private String transactionId;
 
+  private Transaction(String userId, String merchantName, String price, String purchaseDate,
+      String transactionId) {
+    this.userId = userId;
+    this.merchantName = merchantName;
+    this.price = price;
+    this.purchaseDate = purchaseDate;
+    this.transactionId = transactionId;
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public String getUserId() {
     return userId;
   }
@@ -91,5 +104,43 @@ public class Transaction {
 
     return Objects
         .hash(getUserId(), getMerchantName(), getPrice(), getPurchaseDate(), getTransactionId());
+  }
+
+  public static class Builder {
+
+    private String userId;
+    private String merchantName;
+    private String price;
+    private String purchaseDate;
+    private String txId;
+
+    public Builder withUserId(String userId) {
+      this.userId = userId;
+      return this;
+    }
+
+    public Builder withMerchantName(String merchantName) {
+      this.merchantName = merchantName;
+      return this;
+    }
+
+    public Builder withPrice(String price) {
+      this.price = price;
+      return this;
+    }
+
+    public Builder withPurchaseDate(String purchaseDate) {
+      this.purchaseDate = purchaseDate;
+      return this;
+    }
+
+    public Builder withTxID(String txId) {
+      this.txId = txId;
+      return this;
+    }
+
+    public Transaction build() {
+      return new Transaction(userId, merchantName, price, purchaseDate, txId);
+    }
   }
 }
