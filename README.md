@@ -38,7 +38,7 @@ Using a Interface for data-manager(can be memory, can be database)
 - And if the transaction number is smaller than 5, it should return InternalException with errorMsg:``The user only has 1 transactions``
 
 
-##Test
+## Test
 
 I create 4 testcases which cover most of the situations
 ```$xslt
@@ -48,7 +48,7 @@ When_CallSaveTransactionThreeTimesWithMerchantAOneTimeMerchantBOneTimeMerchantC_
 When_CallSaveTransactionTwoTimesWithMerchantATwoTimeMerchantBTwoTimeMerchantCOneTimeMerchantD_Then_CallGetMostVisited_Expected_ListOfMerchantABC
 
 ```
-##Sample Call
+## Sample Call
 - Here is the sample output of GET and POST request
                        
                        
